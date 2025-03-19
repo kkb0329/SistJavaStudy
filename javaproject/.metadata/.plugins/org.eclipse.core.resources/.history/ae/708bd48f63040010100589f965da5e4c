@@ -1,0 +1,55 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ConnectTestEx1 {
+	
+	
+	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+
+	public void connectSawon () {
+		
+		Connection conn=null;
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		String sql="SELECT * FROM sawon ORDER BY num;";
+		
+		try {
+			conn=DriverManager.getConnection(URL,"taelim" ,"a1234" );
+			
+			System.out.println("success");
+			
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				rs.getInt("num");
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+			System.out.println("failed");
+		}
+		
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		ConnectTestEx1 ct=new ConnectTestEx1();
+		ct.connectSawon();
+		
+	}
+
+}

@@ -89,3 +89,5 @@ insert into myshop values(seqshop.nextval,'과자',30,1000,'중형',sysdate);
 
 select * from myshop;
 
+commit;
+
