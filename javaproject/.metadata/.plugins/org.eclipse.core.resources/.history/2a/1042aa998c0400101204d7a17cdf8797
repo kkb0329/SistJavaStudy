@@ -1,0 +1,41 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class DBCrudTest {
+	
+	public void insert() {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		String name,addr;
+		String sql="";
+		
+		System.out.println("name");
+		name=sc.nextLine();
+		
+		System.out.println("addr");
+		addr=sc.nextLine();
+		
+		
+		sql=" inser into hellow values(seq_test,nextval '"+name+"' , '"+addr+"',+sysdate )";
+		System.out.println(sql);
+		
+		Connection conn=null;
+		Statement stmt=null;
+		
+		conn=db.getConnection;
+		
+		
+	}
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,79 @@
+package day0319;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class DBCrudTest {
+	DBConnect db = new DBConnect();
+	public void insert() {
+		
+		Scanner sc=new Scanner(System.in);
+		
+		String name,addr;
+		String sql="";
+		
+		System.out.println("name");
+		name=sc.nextLine();
+		
+		System.out.println("addr");
+		addr=sc.nextLine();
+		
+		
+		//sql=" inser into hellow values(seq_test.nextval '"+name+"' , '"+addr+"',+sysdate )";
+		sql = "INSERT INTO hellow VALUES (seq_test.NEXTVAL, '" + name + "', '" + addr + "', SYSDATE)";
+		System.out.println(sql);
+		
+		Connection conn=null;
+		Statement stmt=null;
+		
+		conn=db.getConnection();
+		
+		try {
+			stmt=conn.createStatement();
+			stmt.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+		
+		
+	}
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		DBCrudTest db=new DBCrudTest();
+		
+		Scanner sc= new Scanner(System.in);
+		int n;
+		
+		while (true) {
+			System.out.println("1.i2.s.3.u4.d 9.e");
+			n=Integer.parseInt(sc.nextLine());
+			
+			
+			if (n==1) {
+				db.insert();
+			} else if(n==9){
+				
+				System.out.println("exit");
+				break;
+
+			}
+			
+		}
+		
+		
+		
+		
+		
+	}
+
+}
