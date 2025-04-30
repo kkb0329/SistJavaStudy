@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    
+    <title>Document</title>
+
+    <script>
+        window.onload = function () {
+            //직접입력시 메세지가 바로 나타나게 하기
+
+            const checkboxes = document.querySelectorAll('input[name="nara"]');
+            var n = "";
+            const d = document.querySelector("table.table-bordered .d");
+            const ee = document.querySelector("table.table-bordered .e");
+
+            const radios = document.querySelectorAll('input[name="tcolor"]');
+
+
+
+            document.querySelector("#txt1").onkeyup = function (e) {
+
+                document.querySelector("table.table-bordered .a").innerHTML = this.value;//방법2
+            }
+
+
+            //입력후 엔터 누르면 적용..keyCode13번
+            document.querySelector("#txt2").onkeyup = function (e) {
+
+                if (e.keyCode == 13) {
+                    document.querySelector("table.table-bordered .b").innerHTML = this.value;
+                    this.value = "";
+                }
+            }
+
+            //배경색변경_querySeletor이용
+            document.querySelector("#color1").oninput = function () {
+
+                document.querySelector("table.table-bordered .c").style.backgroundColor = this.value;
+            }
+
+
+            checkboxes.forEach(cb => {
+                cb.onchange = function () {
+                    let n = "";
+                    checkboxes.forEach(innerCb => {
+                        if (innerCb.checked) {
+                            n += `[${innerCb.value}]`;
+                        }
+                    });
+                    d.innerHTML = n;
+                };
+            });
+
+
+            radios.forEach(radio => {
+                radio.onchange = function () {
+                    if (this.checked) {
+                        ee.style.color = this.value;
+                    }
+                };
+            });
+
+
+        }
+
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <div style="width: 800px;; margin-left: 30px;">
+        <h3 class="alert alert-info">Input태그 과제#1 1:1카톡제출</h3>
+        <table class="table table-bordered">
+            <tr class="table-warning">
+                <th>종류 </th>
+                <th>태그 </th>
+                <th>이벤트후 결과 </th>
+            </tr>
+            <tr>
+                <td>1.input-text </td>
+
+                <td>
+                    <input type="text" id="txt1" placeholder="값을 입력하면 옆칸에 바로나오게 하기" class="form-control">
+
+                </td>
+                <td class="a">결과값나오는곳....</td>
+            </tr>
+
+            <tr>
+                <td>2.input-text </td>
+
+                <td>
+                    <input type="text" id="txt2" placeholder="값을 입력후 엔터누르면 옆칸에 나오기기" class="form-control">
+
+                </td>
+                <td class="b">결과값나오는곳....</td>
+            </tr>
+
+            <tr>
+                <td>3.input-color </td>
+
+                <td>
+                    <input type="color" value="#ffffcc" id="color1" class="form-control">
+
+                </td>
+                <td class="c"></td>
+            </tr>
+
+            <tr>
+                <td>4.input-checkbox </td>
+
+                <td>
+                    <input type="checkbox" name="nara" value="영국">영국&nbsp
+                    <input type="checkbox" name="nara" value="미국">미국&nbsp
+                    <input type="checkbox" name="nara" value="호주">호주 &nbsp
+                    <input type="checkbox" name="nara" value="일본">일본 &nbsp
+                </td>
+                <td class="d">Check한결과</td>
+            </tr>
+
+            <tr>
+                <td>4.input-radiobox </td>
+
+                <td>
+                    <input type="radio" name="tcolor" value="red">빨강&nbsp
+                    <input type="radio" name="tcolor" value="yellow">노랑 &nbsp
+                    <input type="radio" name="tcolor" value="green">초록 &nbsp
+                    <input type="radio" name="tcolor" value="blue" checked="" checked>파랑 &nbsp
+                </td>
+                <td class="e">Radio글자색변경</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

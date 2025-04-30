@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class DBConnect {
 	
 	
-	static final String URL="jdbc:oracle:thin:@localhost:1521:XE";
+	static final String URL="jdbc:oracle:thin:@localhost:1521:xe";
 
 	public  Connection getConnection () {
 		
@@ -21,7 +21,7 @@ public class DBConnect {
 		
 		
 		try {
-			conn=DriverManager.getConnection(URL,"taelim" ,"a1234" );
+			conn=DriverManager.getConnection(URL,"kkb0329" ,"0000" );
 						
 			
 			

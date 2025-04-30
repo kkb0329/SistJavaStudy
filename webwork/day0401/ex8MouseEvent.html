@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #foodimg1{
+            width: 200px;
+            height: 200px;
+            border: 5px solid green;
+            border-radius: 100px;
+        }
+
+        #foodimg2{
+            position: relative;
+            left: 100px;
+            top: 200px;
+            width: 200px;
+        }
+
+        #foodimg3{
+            position: absolute;
+            left: 600px;
+            top: 150px;
+            width: 200px;
+        }
+        #foodimg4{
+            position: absolute;
+            left: 200px;
+            top: 500px;
+            width: 300px;
+            height: 300px;
+            background-image: url("../Food/3.jpg");
+            background-repeat: no-repeat;
+        }
+
+        /*마우스 클릭시 이미지 변경*/
+        #foodimg4:active{
+            background-image: url("../Food/6.jpg");
+        }
+        /*마우스 오버시 이미지 변경*/
+        /*#foodimg4:hover{
+            background-image: url("../Food/8.jpg");
+            background-size:150px 150px;
+        } */
+    </style>
+</head>
+<body>
+    <img src="../Food/12.jpg" title="순두부 라면" id="foodimg1">
+    <img src="../Food/11.jpg" title="망고빙수" id="foodimg2">
+    <img src="../Food/10.jpg" title="햄에그덮밥" id="foodimg3">
+    <img id="foodimg4">
+</body>
+</html>

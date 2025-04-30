@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myimg{position: absolute; }
+
+        #btngo{
+            margin-left: 400px;
+            width: 150px;
+            position: relative;
+            top: 200px;
+        }
+        #btnstop{
+            margin-left: 10px;
+            width: 150px;
+            position: relative;
+            top: 200px;
+        }
+    </style>
+    <script>
+        var myimg;
+        var xpos=500;
+        var ypos=300;
+        var ms=100;
+        var inter;
+
+        window.onload=function(){
+            myimg=document.getElementById("myimg");
+            myimg.style.top=ypos+"px";
+            myimg.style.left=xpos+"px";
+
+             //키보드 아스키코드값 확인
+             window.onkeyup=function(e){
+                console.log(e.keyCode);
+                //상:38  하:40  우:39  좌:37  엔터:13  esc:27
+
+                switch(e.keyCode){
+                    case 38:
+                        ypos-=10;
+                        myimg.style.top=ypos+"px";
+                        break;
+                    case 40:
+                        ypos+=10;
+                        myimg.style.top=ypos+"px";
+                        break;
+                    case 37:
+                        xpos-=10;
+                        myimg.style.left=xpos+"px";
+                        break;
+                    case 39:
+                        xpos+=10;
+                        myimg.style.left=xpos+"px";
+                        break;
+                    case 13:
+                        xpos=500;
+                        ypos=300;
+                        myimg.style.top=ypos+"px";
+                        myimg.style.left=xpos+"px";
+                        break;
+                }
+            }
+
+
+
+            document.getElementById("btngo").onclick=function(){
+               inter=setInterval(function(){
+                    myimg.style.left=xpos+"px";
+                    xpos+=10;
+                },ms);
+            }
+
+
+            document.getElementById("btnstop").onclick=function(){
+                clearInterval(inter); //setInterval멈춤춤
+            }
+
+           
+        }
+        
+    </script>
+</head>
+<body>
+    <img src="../만화이미지/08.png" id="myimg">
+    <br><br>
+    <button type="button" id="btngo">Go!!</button>
+    <button type="button" id="btnstop">Stop!!</button>
+</body>
+</html>

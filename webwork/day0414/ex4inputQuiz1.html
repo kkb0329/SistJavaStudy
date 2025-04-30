@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <title>Document</title>
+    <style>
+        #out{
+            width: 500px;
+            height: 200px;
+            border: 2px solid green;
+            padding: 20px;
+
+        }
+    </style>
+    <script>
+        $(function(){
+
+            //현재날짜 구해서 신청일에 넣어주기
+            var date=new Date();
+            var y=date.getFullYear();
+            var m=date.getMonth()+1;
+            var d=date.getDate();
+
+            var currDay=y+"-"+(m<10?"0":"")+m+"-"+(d<10?"0":"")+d;
+            $("#sdate").val(currDay);
+
+           //버튼이벤트
+           $("#btn_result").click(function(){
+
+                var s="";
+
+                //name
+                s+="이름: "+$("#irum").val()+"<br>";
+
+                //운전면허
+                console.log($("#chklic").val()); //무조건 on
+                console.log($("#chklic").is(":checked")); //체크상태면 true
+                s+="운전면허: "+($("#chklic").is(":checked")?"있음":"없음")+"<br>";
+
+                //생년월일
+                s+="생년월일: "+$("#birth").val()+"<br>";
+
+                //신청일
+                s+="신청일: "+$("#sdate").val()+"<br>";
+
+
+
+
+                $("#out").html(s);
+           });
+
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <legend>폼태그연습_#1</legend>
+        <table class="table" style="width: 400px;;">
+            <tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" class="form-control" id="irum"
+                    style="width: 120px;">
+                </td>
+            </tr>
+            <tr>
+                <th>운전면허</th>
+                <td>
+                    <label><input type="checkbox" id="chklic">운전면허</label>
+                </td>
+            </tr>
+            <tr>
+                <th>생년월일</th>
+                <td>
+                    <input type="date" class="form-control" id="birth"
+                    style="width: 200px;" value="2000-01-01">
+                </td>
+            </tr>
+            <tr>
+                <th>신청일</th>
+                <td>
+                    <input type="date" class="form-control" id="sdate"
+                    style="width: 200px;">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="button" class="btn btn-success"
+                    id="btn_result">Jquery로 입력값 출력</button>
+                </td>
+            </tr>
+        </table>
+
+
+        <div id="out"></div>
+    </form>
+</body>
+</html>

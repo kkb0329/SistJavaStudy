@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var rightId="korea";
+        var rightPw="1234";
+
+
+        function login(id,pw){
+
+            if(id==rightId){
+                
+                if(pw==rightPw){
+                    document.write(id+"님이 방문하셨습니다");
+                }else{
+                    alert("잘못된 비밀번호입니다");
+                }
+            }else{
+                alert("존재하지않는 아이디입니다");
+            }
+        }
+
+        var inputId=prompt("아이디를 입력하세요","ID");
+        var inputpw=prompt("패스워드를 입력하세여여","PASSWORD");
+
+        login(inputId,inputpw);
+
+        
+    </script>
+</body>
+</html>

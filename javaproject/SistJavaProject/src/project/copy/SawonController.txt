@@ -1,0 +1,151 @@
+package project;
+
+import javax.swing.*;
+
+import project.SawonMember.PayUtil;
+
+import java.awt.*;
+import java.sql.SQLException;
+import java.util.List;
+
+public class SawonController {
+
+    private SawonGUI view;
+    private SawonDAO dao;
+
+    public SawonController(SawonGUI view) {
+        this.view = view;
+        this.dao = new SawonDAO();
+    }
+
+    // 사원 추가 다이얼로그
+    public void showInputDialog(String action) {
+        JTextField nameField = new JTextField();
+        JTextField genderField = new JTextField();
+        JTextField buseoField = new JTextField();
+        JTextField payField = new JTextField("1200000"); // 기본값 1200000
+
+        JPanel panel = new JPanel(new GridLayout(0, 2));
+        panel.add(new JLabel("이름:"));
+        panel.add(nameField);
+        panel.add(new JLabel("성별:"));
+        panel.add(genderField);
+        panel.add(new JLabel("부서:"));
+        panel.add(buseoField);
+        panel.add(new JLabel("급여:"));
+        panel.add(payField);
+
+        int result = JOptionPane.showConfirmDialog(view, panel, action, JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                String pay = PayUtil.parsePay(payField.getText());
+                SawonMember member = new SawonMember(0, nameField.getText(), genderField.getText(),
+                        buseoField.getText(), pay, null);
+                dao.register(member);
+                view.showMessage("사원 등록 성공");
+                selectAll();
+            } catch (NumberFormatException e) {
+                view.showMessage("급여 형식 오류: " + e.getMessage());
+            } catch (SQLException e) {
+                view.showMessage("입력 오류: " + e.getMessage());
+            }
+        }
+    }
+
+    // 사원 정보 수정 다이얼로그
+    public void showUpdateDialog() {
+        int selectedRow = view.table.getSelectedRow();
+        if (selectedRow != -1) {
+            int num = (int) view.table.getValueAt(selectedRow, 0);
+            String name = (String) view.table.getValueAt(selectedRow, 1);
+            String gender = (String) view.table.getValueAt(selectedRow, 2);
+            String buseo = (String) view.table.getValueAt(selectedRow, 3);
+            String pay = (String) view.table.getValueAt(selectedRow, 4);
+
+            JTextField nameField = new JTextField(name);
+            JTextField genderField = new JTextField(gender);
+            JTextField buseoField = new JTextField(buseo);
+            JTextField payField = new JTextField(pay); // 수정: pay를 String으로 설정
+
+            JPanel panel = new JPanel(new GridLayout(0, 2));
+            panel.add(new JLabel("이름:"));
+            panel.add(nameField);
+            panel.add(new JLabel("성별:"));
+            panel.add(genderField);
+            panel.add(new JLabel("부서:"));
+            panel.add(buseoField);
+            panel.add(new JLabel("급여:"));
+            panel.add(payField);
+
+            int result = JOptionPane.showConfirmDialog(view, panel, "사원 정보 수정", JOptionPane.OK_CANCEL_OPTION);
+            if (result == JOptionPane.OK_OPTION) {
+                try {
+                    String updatedPay = PayUtil.parsePay(payField.getText());
+                    SawonMember updatedMember = new SawonMember(num, nameField.getText(), genderField.getText(),
+                            buseoField.getText(), updatedPay, null);
+                    dao.update(updatedMember);
+                    view.showMessage("사원 정보 수정 성공");
+                    selectAll();
+                } catch (NumberFormatException e) {
+                    view.showMessage("급여 형식 오류: " + e.getMessage());
+                } catch (SQLException e) {
+                    view.showMessage("수정 오류: " + e.getMessage());
+                }
+            }
+        } else {
+            view.showMessage("수정할 사원을 선택하세요.");
+        }
+    }
+
+    // 전체 사원 조회
+    public void selectAll() {
+        try {
+            List<SawonMember> members = dao.selectAll();
+            view.displayMembers(members);
+        } catch (SQLException e) {
+            view.showMessage("조회 오류: " + e.getMessage());
+        }
+    }
+
+    // 사원 삭제
+    public void deleteMember() {
+        int selectedRow = view.table.getSelectedRow();
+        if (selectedRow != -1) {
+            int num = (int) view.table.getValueAt(selectedRow, 0);
+            int response = JOptionPane.showConfirmDialog(view, "정말로 삭제하시겠습니까?", "삭제 확인", JOptionPane.YES_NO_OPTION);
+            if (response == JOptionPane.YES_OPTION) {
+                try {
+                    dao.delete(num);
+                    view.showMessage("사원 삭제 성공");
+                    selectAll();
+                } catch (SQLException e) {
+                    view.showMessage("삭제 오류: " + e.getMessage());
+                }
+            }
+        } else {
+            view.showMessage("삭제할 사원을 선택하세요.");
+        }
+    }
+
+    // 사원 검색
+    public void showSearchDialog() {
+        JTextField nameField = new JTextField();
+        JPanel panel = new JPanel(new GridLayout(0, 2));
+        panel.add(new JLabel("이름:"));
+        panel.add(nameField);
+
+        int result = JOptionPane.showConfirmDialog(view, panel, "사원 검색", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            try {
+                List<SawonMember> members = dao.searchByName(nameField.getText());
+                view.displayMembers(members);
+            } catch (SQLException e) {
+                view.showMessage("검색 오류: " + e.getMessage());
+            }
+        }
+    }
+
+    public void exit() {
+        System.exit(0);
+    }
+}

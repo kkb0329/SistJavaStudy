@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box1">
+            <img src="../Food/1.jpg" width="200">
+        </div>
+        <div class="box2">
+            <img src="../Food/11.jpg" width="200">
+        </div>
+
+        <div class="buttons">
+            <button type="button" id="btn1">border변경</button>
+            <button type="button" id="btn2">이미지변경</button>
+            <button type="button" id="btn3">너비변경</button>
+            <button type="button" id="btn4">원래대로</button>
+        </div>
+    </div>
+
+
+    <script>
+        //버튼1
+       let img2=document.querySelector("div.container>div.box2>img");
+
+       document.getElementById("btn1").onclick=function(){
+        document.querySelector("div.container>div.box1>img").style.borderStyle="solid";
+        document.querySelector("div.container>div.box1>img").style.borderWidth="10px";
+        document.querySelector("div.container>div.box1>img").style.borderColor="green";
+
+        img2.style.borderStyle="inset";
+        img2.style.borderWidth="10px";
+        img2.style.borderColor="pink";
+       }
+
+       //버튼2
+       document.getElementById("btn2").onclick=function(){
+        document.querySelector("div.container>div.box1>img").setAttribute("src","../Food/2.jpg");
+        img2.setAttribute("src","../Food/12.jpg");
+       }
+
+       //버튼3..너비300으로 변경할것
+   document.getElementById("btn3").onclick=function(){
+    document.querySelector("div.container>div.box1>img").setAttribute("width","300");
+    img2.setAttribute("width","300");
+   }
+
+       //버튼4..초기이미지로 변경할것
+      document.querySelector("#btn4").onclick=function(){
+        document.querySelector("div.container>div.box1>img").style.border='none';
+        document.querySelector("div.container>div.box1>img").setAttribute("src","../Food/1.jpg");
+        document.querySelector("div.container>div.box1>img").setAttribute("width","200");
+
+        img2.style.border='none';
+        img2.setAttribute("src","../Food/11.jpg");
+        img2.setAttribute("width","200");
+      } 
+
+    </script>
+
+
+</body>
+</html>

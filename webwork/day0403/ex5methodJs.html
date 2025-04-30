@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      기본함수(문법)
+      1.Normal한 패턴턴
+      -파라메타와 반환(리턴)값이 없는 함수
+       function 함수명(){
+       
+       }
+
+       -파라메타만 있고 반환(리턴)값이 없는 함수
+       function 함수명(파라1,파라2,..){
+       
+       }
+
+       -파라메타와 반환(리턴)값이 있는  함수 
+       function(파라1,파라2){
+            
+           return 반환값
+       }
+
+      2.리터럴 방식으로 함수만들기
+        함수명=function(파라1,파라2){
+            return 반환값
+        }
+
+     */
+
+  </script>
+
+   <script>
+    //normal방식
+    function hello()
+    {
+        document.write("자바스크립트 첫째날 함수 배우는날<br>");
+    }
+    hello();
+
+
+    //리터럴방식 
+   nice=function(){
+      document.write("Js수업 쉽죠?<br>");
+   }
+    nice();
+
+    //익명함수..거의 안씀씀
+    (function(){
+        document.write("이름없는 함수랍니다");
+    }) 
+    ();
+   </script>
+
+   <script>
+
+    //중복되는 부분을 함수로 포장한후 중복되지않는 부분 을
+    //  파라메타로 만든후 함수를 호출할때 넘긴다다
+      document.write("안녕 난 동희야<br>");
+      document.write("안녕 난 금명야<br>");
+      document.write("안녕 난 미주야<br>");
+      document.write("안녕 난 유이야<br>");
+
+      ///////////////////////////
+
+      function showName(name){
+        document.write("안녕 난 "+name+"야<br>");
+      }
+
+      showName("동희");
+      showName("금영");
+      showName("미주 ");
+      showName("유이 ");
+
+
+ ////////////////////////////
+ //안녕하세요?
+ //은지 님의 나이는 26세 입니다
+ //동네는 서울시 강서구 에요
+ //함수명은 writeInfo ..파라메터명은 알아서 넘겨주세요요
+
+ var writeInfo=function(name,age,city){
+    document.write("안녕하세요?<br>"+name+"님의 나이는 "+age+"세 입니다<br> 동네는 "+city+" 에요~~");
+ }
+
+ writeInfo("은지",26,"서울시 강서구");
+   </script>
+
+</body>
+</html>

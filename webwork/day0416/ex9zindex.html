@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+  <style>
+    div.wall{
+
+        position: absolute;
+        width: 200px;
+        height: 500px;
+        background: url('../jquery_img/bg2.png');
+        z-index: 2;
+    }
+
+    #img{
+        position: absolute;
+        left: 120px;
+        top: 300px;
+        width: 150px;
+        height: 200px;
+        z-index: 1;
+    }
+  </style>
+    
+</head>
+<body>
+    <div class="wall"></div>
+    <img src="../jquery_img/03.png" id="img">
+
+    <script>
+        //이미지를 클릭시 숨었다 나오는 효과애니메이션
+        $("#img").click(function(){
+            $(this).animate({width:'0px'},'slow',function(){
+                $(this).animate({width:'150px'},'slow');
+            });
+        });
+
+        //3초에 한번 이미지를 강제클릭효과
+        setInterval(function(){
+            $("#img").trigger("click");
+        },3000);
+    </script>
+</body>
+</html>

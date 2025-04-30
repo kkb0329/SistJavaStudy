@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <title>Document</title>
+    <style>
+        body,body *{
+            font-family: 'Hi Melody';
+        }
+        figure{float: left;}
+        figure img{
+            width: 90px;
+        }
+
+        figure figcaption{text-align: center;}
+    </style>
+</head>
+<body>
+    <div id="show"></div>
+    <script>
+        let todayhome=[
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-359467666391104.png?w=144","title":"원하는날도착"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-338115441336320.png?w=144","title":"오늘의딜"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-338127237271680.png?w=144","title":"집들이"},
+            {"img":"https://ohou.se/competitions/1002?affect_type=Home&affect_id=0","title":"행운출첵"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-338127944073216.png?w=144","title":"살림살이"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-356938692182016.png?w=144","title":"집꾸테스트"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-338128113700928.png?w=144","title":"오마트"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-359553811202176.png?w=144","title":"단독상품"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-338128227590144.png?w=144","title":"리모델링"},
+            {"img":"https://prs.ohousecdn.com/apne2/home/shortcut/home_feed_shortcut_sets/v1-338128288104576.png?w=144","title":"입주청소"}]
+    
+
+    $.each(todayhome,function(idx,item){
+
+        $("#show").append(`
+            <figure>
+                <img src="${item.img}">
+                <figcaption>
+                    <b>${item.title}</b>
+                </figcaption>
+            </figure>
+        `);
+
+    });
+    
+    </script>
+</body>
+</html>

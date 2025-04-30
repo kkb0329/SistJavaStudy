@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+   <person no="1">
+       <name>현승윤</name>
+       <addr>서울 서초구</addr>
+   </person>
+   <person no="2">
+       <name>이영지</name>
+       <addr>서울 강서구</addr>
+   </person>
+   <person no="3">
+       <name>김민중</name>
+       <addr>강원도 원주시</addr>
+   </person>
+   <person no="4">
+       <name>김세라</name>
+       <addr>제주 서귀포</addr>
+   </person>
+</data>

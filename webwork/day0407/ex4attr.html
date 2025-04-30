@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <script>
+
+        //점점작게,점점크게는 3px씩 증가/감소하도록
+        //8보다 작아지면  더이상 줄일수 없다고 경고후 종료
+        //60보다 커지면 경고후 종료
+        //2개의 버튼클릭시 마다 현재글꼴사이즈를 fsiz에 출력
+        window.onload=function(){
+
+            var fsize=document.getElementById("fsize");
+            var out=document.getElementById("out");
+
+            fsize.innerHTML="현재 글꼴 사이즈는 40px 입니다";
+
+
+         //btn1
+         document.getElementById("btn1").onclick=function(){
+            var outsize=parseInt(out.style.fontSize,10);
+           //alert(outsize);
+           outsize-=3;
+
+           if(outsize<8){
+            alert("더이상 줄일수 없습니다");
+            return; //메서드 종료
+           }
+
+           out.style.fontSize=outsize+"px";
+           fsize.innerHTML="현재글꼴 크기는"+outsize+"px입니다";
+
+         }
+
+
+         //btn2
+         document.getElementById("btn2").onclick=function(){
+            var outsize=parseInt(out.style.fontSize,10);
+           //alert(outsize);
+           outsize+=3;
+
+           if(outsize>60){
+            alert("더이상 커질수 없습니다");
+            return; //메서드 종료
+           }
+
+           out.style.fontSize=outsize+"px";
+           fsize.innerHTML="현재글꼴 크기는"+outsize+"px입니다";
+
+         }
+
+
+         //글자색선택
+         document.getElementById("mycolor").onchange=function(){
+            //alert(this.value);
+            out.style.color=this.value;
+         }
+
+         //테두리선택
+         document.getElementById("selWidth").onchange=function(){
+            //alert(this.value);
+            out.style.borderWidth=this.value+"px";
+            //out.style.borderStyle="dashed";
+         }
+
+
+        }
+    </script>
+</head>
+<body>
+    <button type="button" id="btn1">점점작게</button>
+    <button type="button" id="btn2">점점크게</button>
+    <hr>
+    <div id="fsize"></div>
+    <b>글자색선택: </b>
+    <input type="color" id="mycolor" value="#ffff00">
+    <br><br>
+    <b>테두리선 굵기선택: </b>
+    <select id="selWidth">
+        <!-- value가 있을때는 value값 우선 없을경우는 option 사이값을 읽는다 -->
+        <option value="0">없음</option>
+        <option>1</option>
+        <option>3</option>
+        <option>5</option>
+        <option>9</option>
+    </select>
+
+    <div id="out" style="font-size: 40px; border: 10px dotted gray;">오늘은 즐거운 월요일입니다</div>
+</body>
+</html>

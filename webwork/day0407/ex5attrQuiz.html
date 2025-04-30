@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //사진은 10씩 증가,감소
+        //원하는 사진선택시 이미지에 출력되도록한다
+
+        window.onload=function(){
+           var selimage=document.getElementById("selimage");
+           var photo=document.getElementById("photo");
+           
+           //select태그 에서 선택된 option의 value값 
+           var init_image=selimage.value;
+           //alert(init_image);
+
+           //현재사진src속성 변경
+           photo.setAttribute("src",init_image);
+
+           //사진선택 이벤트
+           selimage.onchange=function(){
+
+               console.log(this.value);
+
+               //사진(photo)의 src에 this.value를 적용
+               photo.setAttribute("src",this.value);
+           }
+
+           //점점작게
+           document.getElementById("btnSmall").onclick=function(){
+            //photo의 현재 width값 얻기
+            var w=photo.getAttribute("width");
+            w-=10;
+            photo.setAttribute("width",w);
+           }
+
+           //점점크게
+           document.getElementById("btnLarge").onclick=function(){
+            //photo의 현재 width값 얻기
+            var w=parseInt(photo.getAttribute("width"));
+            w+=10;
+            photo.setAttribute("width",w);
+           }
+
+
+        }
+    </script>
+    <style>
+        .container div img{
+            border: 10px groove gray;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .container{
+            position: absolute;
+            left: 200px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="buttons">
+            <button type="button" id="btnSmall">점점작게 </button>
+            <button type="button" id="btnLarge">점점크게 </button>
+       
+    
+        <b style="margin-left: 20px;">사진선택</b>
+        <select id="selimage">
+            <option value="../Food/1.jpg">에그샌드위치</option>
+            <option value="../Food/11.jpg">망고빙수</option>
+            <option value="../Food/5.jpg">콘치즈</option>
+            <option value="../Food/10.jpg">햄에그라이스</option>
+        </select>
+    </div>
+
+
+    <div>
+        <img src="../div_img/beauty3.jpg" id="photo" width="300">
+    </div>
+
+</div>
+</body>
+</html>

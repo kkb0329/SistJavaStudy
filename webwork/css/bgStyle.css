@@ -1,0 +1,33 @@
+div{
+    width: 400px;
+    height: 250px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    background-size: 50px 70px;
+}
+
+div.a{
+    background-image: url("../flower_ani/f18.png");
+}
+div.b{
+    background-image: url("../flower_ani/f3.png");
+    background-repeat: repeat-x;
+}
+div.c{
+    background-image: url("../flower_ani/f11.png");
+    background-repeat: repeat-y;
+}
+div.d{
+    background-image: url("../flower_ani/f3.png");
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+body{
+    background-image: url("../Food/1.jpg");
+    background-repeat: no-repeat;
+    background-position: 800px 500px;
+}
+.bg{background-color: pink}

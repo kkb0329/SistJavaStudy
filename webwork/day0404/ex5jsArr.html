@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>10개의 랜덤수 출력_1~10</h2>
+    
+    <script>
+        var rnd;
+        for(var i=1;i<=10;i++){
+            rnd=parseInt(Math.random()*10)+1;
+            document.write('<b>'+rnd+'</b>&nbsp;&nbsp;');
+        }
+    </script>
+
+<h2>자바스크립트에서 배열 선언하는 방법1</h2>
+<script>
+    var arr=new Array();
+    arr[0]="장미";
+    arr[1]="후리지아";
+    arr[2]="수국";
+    arr[3]="백합";
+
+    //출력
+    for(var i=0;i<arr.length;i++)
+    {
+        document.write(arr[i]+"<br>");
+    }
+</script>
+
+<h2>자바스크립트에서 배열 선언하는 방법2_초기값 바로지정</h2>
+<script>
+    var arr2=['red','yellow','magenta','orange','cyan','gray'];
+
+    for(var i=0;i<arr2.length;i++)
+    {
+        document.write("<font color='"+arr2[i]+"' size='5'>Hello</font><br>");
+    }
+</script>
+<h2>자바스크립트에서 배열 선언하는 방법3_2차원 배</h2>
+<script>
+    var arr3=new Array();
+    arr3[0]=['red','장미'];
+    arr3[1]=['green','국화'];
+    arr3[2]=['pink','다알리아'];
+    arr3[3]=['yellow','후리지아'];
+
+    for(var i=0;i<arr3.length;i++)
+    {
+        document.write("<font color='"+arr3[i][0]+"' size='5'>"+arr3[i][1]+"</font><br>");
+    }
+</script>
+
+<h2>5개의 배열을 컬러색상으로 초기값주고 해당색으로 해당값을 출력 ...h1태그로 출력</h2>
+<script>
+    var colors=["red","blue","gray","green","magenta","purple"];
+
+    for(var i=0;i<colors.length;i++)
+    {
+        document.write("<h1 style='color: "+colors[i]+";'>"+colors[i]+"</h1>");
+        
+    }
+</script>
+
+<h2>배열요소 추가 삭제</h2>
+<script>
+    var food=new Array();
+
+    food.push("햄버거");  //배열의 마지막에 요소추가 food[0]
+    food.push("피자");   //food[1]
+    food.push("샌드위치");  //food[2]
+
+    for(var i=0;i<food.length;i++)
+    {
+        document.write("<h1>"+food[i]+"</h1>");
+    }
+    document.write("-----------------------------<br>")
+
+    food.pop(); //마지막 배열값 제거
+    
+
+
+    food.shift(); //배열의 첫번째 요소 제거
+    food.unshift("김밥"); //배열의 처음에 요소 추가가
+
+    console.log(food);
+
+</script>
+
+
+<h2>배열요소 함수</h2>
+    <script>
+        function testScore(arrData){
+
+            var sum=0;
+
+            for(var i=0;i<arrData.length;i++){
+               sum+=Number(prompt(arrData[i]+"점수는?","0")) ;
+            }
+
+            var avg=sum/arrData.length;
+
+            return avg;
+        }
+
+        var arrLang=['Java','Oracle','Html'];
+
+        var result=testScore(arrLang);
+
+        document.write("평균점수는 "+result+"점 입니다");
+    </script>
+</body>
+</html>

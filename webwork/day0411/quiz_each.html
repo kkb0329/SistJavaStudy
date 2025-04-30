@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" class="btn btn-warning" id="btn-shop">쇼핑몰사진(26~35)</button>
+    <button type="button" class="btn btn-info" id="btn-food">음식사진(3~12)</button>
+    <button type="button" class="btn btn-primary" id="btn-celeb">연예인사진(5~14)</button>
+    <!-- 반복문으로 noimage 10개 넣어놓기
+     그리고 버튼누를때 해당사진으로 10개씩 채우기기 -->
+    <div class="img-container"></div>
+
+    <script>
+        $(function () {
+            for (let i = 0; i < 10; i++) {
+                $(".img-container").append(
+                    `<img src="../jquery_img/no.jpg" width="200" class="n">`
+                );
+            }
+
+            function updateImages(folder, start) {
+                $(".img-container img").each(function (index) {
+                    $(this).attr("src", `../${folder}/${start + index}.jpg`);
+                });
+            }
+
+            $("#btn-shop").click(function () {
+                updateImages("쇼핑몰사진", 26);
+            });
+
+            $("#btn-food").click(function () {
+                updateImages("Food", 3);
+            });
+
+            $("#btn-celeb").click(function () {
+                updateImages("연예인사진", 5);
+            });
+
+            
+            $(".img-container").on("error", "img", function () {
+                $(this).attr("src", "../jquery_img/no.jpg");
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

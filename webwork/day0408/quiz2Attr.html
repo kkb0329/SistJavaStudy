@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sangpum{width: 100px; height: 100px;}
+        .result_sangpum{width: 300px; height: 300px;}
+        #result-div>img{
+            position: absolute;
+            left: 350px;
+            top: 300px;
+            width: 600px;
+            height: 450px;
+            border: 10px dotted pink;
+        }
+    </style>
+
+<script>
+    window.onload = function () {
+    const container = document.getElementById("gallery_div");
+    const mainPhoto = document.getElementById("img_result");
+    const defaultImage = "../div_img/beauty1.jpg"; 
+
+    for (let i = 1; i <= 7; i++) {
+        
+        let img = document.getElementById("img" + i); 
+
+        img.onmouseover = function () {
+            mainPhoto.src = this.src;  
+        };
+
+        img.onmouseout = function () {
+            mainPhoto.src = defaultImage;  
+        };
+
+        
+
+        
+
+
+
+        
+    }
+};
+
+</script>
+</head>
+<body>
+
+    <!-- 위에 작은 이미지 클릭시 아래큰이미지 나오게 -->
+    <div id="gallery_div">
+        <img src="../logoImg/acc01.png" class="sangpum" id="img1">
+        <img src="../logoImg/acc02.png" class="sangpum" id="img2">
+        <img src="../logoImg/acc03.png" class="sangpum" id="img3">
+        <img src="../logoImg/bag01.png" class="sangpum" id="img4">
+        <img src="../logoImg/bag02.png" class="sangpum" id="img5">
+        <img src="../logoImg/bag03.png" class="sangpum" id="img6">
+        <img src="../logoImg/bag04.png" class="sangpum" id="img7">
+    </div>
+
+    <div id="result-div">
+      <img src="../div_img/beauty1.jpg" class="result_sangpum" id="img_result">
+    </div>
+</body>
+</html>

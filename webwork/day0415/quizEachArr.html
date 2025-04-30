@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        .fg {
+            float: left;
+        }
+
+        .fg img {
+            border: 2px solid green;
+            border-radius: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .fg figcaption {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .large {
+            width: 400px;
+            height: 500px;
+            border: 10px inset gold;
+            position: absolute;
+            left: 400px;
+            top: 200px;
+        }
+    </style>
+
+    <script>
+        $(function () {
+
+
+            $("#large_img").attr("src", `../Food/1.jpg`);
+
+
+
+            $(document).on("click", "img.small", function () {
+                var src = $(this).attr("src");
+                $("#large_img").attr("src", src);
+            });
+
+
+            $(".small").hover(
+                function () {
+                    $(this).css("transform", "rotate(45deg)");
+                },
+                function () {
+                    $(this).css("transform", "rotate(0deg)");
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <div id="show"></div>
+    <img id="large_img" class="large">
+
+    <script>
+        
+            var array = ["빵밥", "꼬치", "매운면", "갈비찜", "리조또"];
+            var s = "";
+
+            $.each(array, function (idx, caption) {
+                s += `<div class="fg">`;
+                s += `<figure>`;
+                s += `<img src="../Food/${idx + 1}.jpg" alt="${caption}" width="120" class="small">`;
+                s += `<figcaption>${caption}</figcaption>`;
+                s += `</figure>`;
+                s += `</div>`;
+            });
+
+            $("#show").html(s);            
+
+
+       
+    </script>
+</body>
+
+</html>
+

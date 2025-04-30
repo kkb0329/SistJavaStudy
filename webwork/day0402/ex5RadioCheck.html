@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid gray;
+            width: 600px;
+            border-collapse: collapse;
+        }
+        tr,th,td{
+            border: 1px solid gray;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption><b>Radio&Check</b></caption>
+        <tr>
+           <td>
+            <b>현재 수업중인 강의장</b>
+            <!-- radio는 name이 동일해야 한다 단일선택택-->
+              <input type="radio" name="grade" value="1강의장">1강의장&nbsp;
+              <input type="radio" name="grade" value="2강의장">2강의장&nbsp;
+              <input type="radio" name="grade" value="3강의장">3강의장&nbsp;
+              <input type="radio" name="grade" value="4강의장">4강의장&nbsp;
+           </td> 
+        </tr>
+
+        <tr>
+            <td>
+                <b>가능한 프로그램 언어</b>
+                <!-- check는  name이 동일해야 한다 다중선택-->
+                <input type="checkbox" name="lang" value="C언어">C언어&nbsp;
+                <input type="checkbox" name="lang" value="JAVA">JAVA&nbsp;
+                <input type="checkbox" name="lang" value="ORACLE">ORACLE&nbsp;
+                <input type="checkbox" name="lang" value="HTML">HTML&nbsp;
+                <input type="checkbox" name="lang" value="MYSQL">MYSQL&nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>좋아하는 이미지</b>
+                <input type="file">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>함께 프로젝트 하고 싶은 사람</b>
+                <select>
+                    <option value="민규">민규</option>
+                    <option value="주희">주희</option>
+                    <option value="태민">태민</option>
+                    <option value="승윤" selected="selected">승윤</option>
+                    <option value="찬혁">찬혁</option>
+                    <option value="현정">현정</option>
+                    <option value="용희">용희</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>당신의 신장은 몇 cm입니까?</b>
+                <input type="number" name="height" min="150" max="210" step="2"
+                value="150">Cm
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>당신의 몸무게는 몇 Kg입니까?</b>
+                <input type="number" name="weight" min="40" max="120" step="2"
+                value="50">Kg
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>당신의 퍼스널 컬러는?</b>
+                <input type="color">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <b>날짜선택</b>
+                <input type="date" value="2022-12-24">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

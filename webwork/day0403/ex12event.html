@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ok(){
+            alert("예 시험신청 했습니다");
+        }
+
+        function no(){
+            alert("아니오 아직못했어요");
+        }
+
+        function myconfirm(){
+
+            if(confirm("약속알죠?")){
+                alert("네 알아요");
+            }else{
+                alert("아니오 모릅니다");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>시험신청 하셨나요?</h1>
+    <form action="#">
+        <fieldset>
+            <legend>시험신청확인</legend>
+            <input type="button" value="예" onclick="ok()">
+            <input type="button" value="아니오 " onclick="no()">
+        </fieldset>
+    </form>
+
+    <!-- 확인창 -->
+     <input type="button" value="클릭하세요~~" onclick="myconfirm()">
+</body>
+</html>

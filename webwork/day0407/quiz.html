@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <script>
+        window.onload = function () {
+            var img = document.getElementById("poto");
+            var select = document.getElementById("selimage");
+            var btnSmall = document.getElementById("buttonSmall");
+            var btnLarge = document.getElementById("buttonLarge");
+    
+            // 이미지 선택 시 변경
+            select.onchange = function () {
+                img.src = select.value;
+            }
+    
+            // 점점 작게
+            btnSmall.onclick = function () {
+                var currentWidth = img.width;
+                if (currentWidth > 50) {  // 최소 크기 제한
+                    img.width = currentWidth - 20;
+                }
+            }
+    
+            // 점점 크게
+            btnLarge.onclick = function () {
+                var currentWidth = img.width;
+                img.width = currentWidth + 20;
+            }
+        }
+    </script>
+    
+
+</head>
+
+<body>
+    <div>
+        <div>
+            <button type="button" id="buttonSmall">점점작게</button>
+            <button type="button" id="buttonLarge">점점크게</button>
+        </div>
+
+        <b style="margin-left: 20px;">사진선택</b>
+
+        <select id="selimage">
+
+            <option value="../Food/1.jpg">에그센드위치</option>
+            <option value="../Food/11.jpg">망고빙수</option>
+            <option value="../Food/5.jpg">콘치즈</option>
+            <option value="../Food/10.jpg">햄에그라이스</option>
+
+
+
+        </select>
+
+
+    </div>
+<div>
+
+
+    <img src="../div_img/beauty3.jpg" id="poto" width="300">
+
+</div>
+
+
+
+</body>
+
+</html>

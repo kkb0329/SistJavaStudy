@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        #main_photo {
+
+            position: absolute;
+            left: 550px;
+            top: 150px;
+        }
+
+        #large_photo {
+
+            width: 400px;
+            height: 500px;
+            border: 5px groove gray;
+        }
+
+        #photo_small {
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            width: 400px;
+            height: 600px;
+            border: 2px solid gray;
+            padding: 10px 10px;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            border: 2px solid gray;
+            cursor: pointer;
+        }
+    </style>
+
+
+<script>
+    window.onload = function () {
+        const container = document.getElementById("photo_small");
+        const mainPhoto = document.getElementById("photo_large");
+        const defaultImage = "../div_img/beauty4.jpg"; 
+
+        
+        for (let i = 1; i <= 35; i++) {
+            let img = document.createElement("img");
+           // img.src = `../쇼핑몰사진/${i}.jpg`;
+            img.src = "../쇼핑몰사진/"+i+".jpg";
+            img.className = "thumb";
+
+            
+            img.onmouseover = function () {
+                mainPhoto.src = this.src;
+            };
+
+            img.onmouseout = function () {
+            mainPhoto.src = defaultImage;
+
+            
+        };
+
+            container.appendChild(img);
+        }
+    };
+
+        
+
+    </script>
+</head>
+
+<body>
+
+    <div id="photo_small">
+
+
+
+
+
+    </div>
+
+
+    <div id="main_photo">
+
+
+
+         <img src="../div_img/beauty4.jpg" id="photo_large">
+
+
+
+    </div>
+
+
+</body>
+
+</html>

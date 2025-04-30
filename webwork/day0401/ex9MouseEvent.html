@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>이미지에서 마우스 이벤트_img태그안에서 
+        이벤트안의 this는 자기자신 즉 img태그
+    </h2>
+    
+    <img src="../연예인사진/10.jpg" width="400"
+    onmouseover="this.src='../연예인사진/11.jpg'"
+    onmouseout="this.src='../연예인사진/10.jpg'">
+    <br>
+    <img src="../Food/1.jpg" width="400"
+    onmouseenter="this.src='../Food/2.jpg'"
+    onmouseleave="this.src='../Food/1.jpg'">
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/buttonStyle.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #result{
+            width: 400px;
+            font-size: 15pt;
+
+        }
+
+        #result img{
+            max-width: 300px;
+        }
+    </style>
+    <script>
+        //배열에 5개의 이미지
+        var imgarr=new Array();
+        //imgarr[0]="../Food/2.jpg";
+        imgarr.push("../Food/2.jpg");
+        imgarr.push("../Food/12.jpg");
+        imgarr.push("../Food/6.jpg");
+        imgarr.push("../Food/7.jpg");
+        imgarr.push("../Food/11.jpg");
+    
+        function showImage(){
+    
+            var r=document.getElementById("result");
+            var idx=Number(prompt("출력할 이미지의 인덱스 번호를 입력하세요",0));
+    
+            if(idx<0 || idx>4){
+    
+                r.innerHTML="해당번호의 이미지는 없습니다";
+            }else{
+                r.innerHTML="<img src='"+imgarr[idx]+"'>";
+            }
+        }
+       </script>
+</head>
+<body>
+    <!-- 문제
+     1. 총 5개의 이미지를 배열형태로 넣어놓기(폴더형태로 )
+     2. prompt로 "출력할 이미지의 인덱스 번호를 입력하세요 라고 출력 0번을 입력하면 0번이미지출력
+     3. 없는 인덱스 번호 쓰면 '해당번호의 이미지는 없습니다'"-->
+   <button id="btnImg" class="btn btn-green" type="button" onclick="showImage()">이미지출력</button> 
+   <hr>
+   <div id="result">이미지출력하는곳....</div>
+
+   
+</body>
+</html>

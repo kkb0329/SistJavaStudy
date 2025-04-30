@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #one{
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+
+        //getAttribute("속성값");
+        //setAttribute("속성값","변경할값");
+        
+
+        function photoSmall(){
+
+            
+            var p=document.getElementById("myimg");
+            var w= p.getAttribute("width");
+            
+            console.log(typeof(w)); //string
+
+            w-=10; //string 타입이라도 -나 *는 숫자로 계산됨(+만 안됨됨)
+            p.setAttribute("width",w);
+        }
+
+        function photoLarge(){
+
+            var p=document.getElementById("myimg");
+            var w= p.getAttribute("width");
+            w=parseInt(w);  //string타입의 숫자를 int타입으로 변환
+            
+            console.log(typeof(w)); //string
+            w+=10;
+            p.setAttribute("width",w);
+        }
+    </script>
+</head>
+<body>
+     <h3>#1. 이미지의 사이즈 조절</h3>
+     
+
+     <div id="one">
+        <button type="button" onclick="photoLarge()">점점크게</button>
+        <button type="button" onclick="photoSmall()">점점작게</button>
+     </div>
+
+     <img src="../logoImg/toy03.png" width="200" id="myimg">
+
+     <h3>#1. 이미지의 버튼명대로 사진변경</h3>
+     <button type="button" id="btnBy">박보영</button>
+     <button type="button" id="btnSh">박신혜</button>
+     <button type="button" id="btnMa">신민아</button>
+
+     <script>
+        var b1=document.getElementById("btnBy");
+        var b2=document.getElementById("btnSh");
+        var b3=document.getElementById("btnMa");
+
+        var photo=document.getElementById("myimg");
+
+        //박보영
+        b1.onclick=function(){
+            photo.setAttribute("src","../연예인사진/12.jpg");
+        }
+        b2.onclick=function(){
+            photo.setAttribute("src","../연예인사진/13.jpg");
+        }
+        b3.onclick=function(){
+            photo.setAttribute("src","../연예인사진/17.jpg");
+        }
+     </script>
+</body>
+</html>

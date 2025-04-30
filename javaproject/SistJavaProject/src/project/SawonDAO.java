@@ -1,0 +1,87 @@
+package project;
+
+import java.sql.*;
+import java.util.*;
+
+import day0319.DBConnect;
+
+public class SawonDAO {
+    private DBConnect db = new DBConnect();
+
+    // SQL 쿼리 상수
+    private static final String INSERT_QUERY = "INSERT INTO sawon (num, name, gender, buseo, pay, hireday) VALUES (seq_sawon.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
+    private static final String SELECT_ALL_QUERY = "SELECT num, name, gender, buseo, TO_CHAR(pay, 'L999,999,999') pay, hireday FROM sawon ORDER BY num";
+    private static final String UPDATE_QUERY = "UPDATE sawon SET name = ?, gender = ?, buseo = ?, pay = ? WHERE num = ?";
+    private static final String DELETE_QUERY = "DELETE FROM sawon WHERE num = ?";
+    private static final String SEARCH_BY_NAME_QUERY = "SELECT num, name, gender, buseo, pay, hireday FROM sawon WHERE name LIKE ? ORDER BY num";
+
+    // 회원 등록
+    public void register(SawonMember member) throws SQLException {
+        try (Connection conn = db.getConnection(); 
+             PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY)) {
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getGender());
+            pstmt.setString(3, member.getBuseo());
+            pstmt.setString(4, member.getPay());
+            pstmt.executeUpdate();
+        } 
+    }
+
+    // 모든 회원 조회
+    public List<SawonMember> selectAll() throws SQLException {
+        List<SawonMember> members = new ArrayList<>();
+        try (Connection conn = db.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(SELECT_ALL_QUERY);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                members.add(new SawonMember(rs.getInt("num"), rs.getString("name"), rs.getString("gender"),
+                        rs.getString("buseo"), rs.getString("pay"), rs.getDate("hireday")));
+            }
+        } 
+        return members;
+    }
+
+    // 회원 정보 수정
+ // 회원 정보 수정
+    public void update(SawonMember member) throws SQLException {
+        try (Connection conn = db.getConnection(); 
+             PreparedStatement pstmt = conn.prepareStatement(UPDATE_QUERY)) {
+            pstmt.setString(1, member.getName());
+            pstmt.setString(2, member.getGender());
+            pstmt.setString(3, member.getBuseo());
+            pstmt.setString(4, member.getPay());
+            pstmt.setInt(5, member.getNum());
+            int updatedRows = pstmt.executeUpdate();
+            if (updatedRows == 0) {
+                throw new SQLException("회원 정보 수정 실패: 존재하지 않는 회원입니다.");
+            }
+        } 
+    }
+
+
+    // 회원 삭제
+    public void delete(int num) throws SQLException {
+        try (Connection conn = db.getConnection(); 
+             PreparedStatement pstmt = conn.prepareStatement(DELETE_QUERY)) {
+            pstmt.setInt(1, num);
+            pstmt.executeUpdate();
+        } 
+    }
+
+    // 회원 이름으로 검색
+    public List<SawonMember> searchByName(String name) throws SQLException {
+        List<SawonMember> members = new ArrayList<>();
+        try (Connection conn = db.getConnection(); 
+             PreparedStatement pstmt = conn.prepareStatement(SEARCH_BY_NAME_QUERY)) {
+            pstmt.setString(1, "%" + name + "%");
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    members.add(new SawonMember(rs.getInt("num"), rs.getString("name"), rs.getString("gender"),
+                            rs.getString("buseo"), rs.getString("pay"),
+                            rs.getDate("hireday")));
+                }
+            }
+        } 
+        return members;
+    }
+}

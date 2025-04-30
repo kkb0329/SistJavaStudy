@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lottoStyle.css" rel="stylesheet">
+    <title>Document</title>
+    <script>
+
+        window.onload=function(){
+
+            var lotto=new Array(6);
+            var out=document.getElementById("out");
+
+            document.getElementById("btnlotto").onclick=function(){
+                for(var i=0;i<lotto.length;i++){
+                    //1~45사이의 난수발생시켜 배열에 넣기기
+                    lotto[i]=parseInt(Math.random()*45)+1; 
+
+                    for(var j=0;j<i;j++){
+                        if(lotto[i]==lotto[j]){
+                            i--;
+                            break;
+                        }
+                    }
+                }
+
+                //정렬
+                for(var i=0;i<lotto.length-1;i++){
+                    for(var j=i+1;j<lotto.length;j++){
+                        if(lotto[i]>lotto[j]){
+                            var temp=lotto[i];
+                            lotto[i]=lotto[j];
+                            lotto[j]=temp;
+                        }
+                    }
+                }
+
+                console.log(lotto);
+
+
+                //div안에 출력
+                var s="";
+
+                for(var i=0;i<lotto.length;i++){
+                    s+="<div class='lotto'>"+lotto[i]+"</div>";
+                }
+
+                out.innerHTML=s;
+            }
+               
+        }
+        
+    </script>
+</head>
+<body>
+    <button type="button" class="btn btn-outline-primary" id="btnlotto">로또숫자 구하기</button>
+
+    <div id="out"></div>
+</body>
+</html>

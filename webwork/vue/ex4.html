@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+      <h3>이미지 변경하기</h3>
+      <img v-bind:src="imgname" width="200">
+      <hr>
+      <h4>버튼으로 이미지 변경..메소드 만들어 적용할것! </h4>
+      <button type="button" @click="changeImage1">이미지1</button>
+      <button type="button" @clivk="changeImage2">이미지2</button>
+      <button type="button" @click="changeImage3">이미지3</button>
+
+      <h3>텍스트로 변경하기</h3>
+      <input v-model="imgname">
+    </div>
+    <script>
+        const app=Vue.createApp({
+
+            data(){
+
+                return{
+                   imgname:'../jquery_img/01.png'
+                }
+            },
+            methods:{
+                changeImage1:function(){
+                    this.imgname='../jquery_img/02.png'
+                },
+                changeImage2:function(){
+                    this.imgname='../jquery_img/03.png'
+                },
+                changeImage3:function(){
+                    this.imgname='../jquery_img/04.png'
+                },
+            }
+
+        })
+
+        app.mount('#app')
+    </script>
+    <style>
+
+    </style>
+
+</body>
+</html>

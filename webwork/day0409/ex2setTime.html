@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myimg{
+            position: absolute;
+        }
+        #time{
+            font-size: 2em;
+            margin-left: 100px;
+            font-weight: bold;
+
+        }
+    </style>
+    <script>
+        var xpos=500;
+        var ypos=550;
+        var myimg;
+
+        window.onload=function(){
+
+
+            writeTime();
+
+            //1초마다 시간 다시 출력
+            setInterval(function(){
+                writeTime();
+            },1000);
+
+
+            myimg=document.getElementById("myimg");
+
+           /* myimg.style.left=xpos+"px";
+            myimg.style.top=ypos+"px"*/
+
+            //5초뒤에 딱한번 이미지위치 변경
+            setTimeout(function(){
+                myimg.style.left=xpos+"px";
+                myimg.style.top=ypos+"px";
+            },5000);
+
+        }
+
+        function writeTime(){
+            var date=new Date();
+            var h=date.getHours();
+            var m=date.getMinutes();
+            var s=date.getSeconds();
+
+            //var time=h+":"+m+":"+s;
+            var time=h+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+            document.getElementById("time").innerHTML=time;
+        }
+    </script>
+</head>
+<body>
+    <h3>setRimeout & setInterval 에 대한 공부</h3>
+
+    <div id="time"></div>
+    <img src="../만화이미지/04.png" id="myimg">
+</body>
+</html>

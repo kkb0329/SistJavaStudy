@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{border: 2px solid gray;}
+        tr,th,td{
+            border: 1px dotted green;
+        }
+    </style>
+</head>
+<body>
+    <table >
+        <tr>
+            <!--tr은 하나의 행 -->
+            <th>이름 </th><!--th는 제목열-->
+            <th>주소 </th>
+            <th>학과 </th>
+            <th>학년 </th>
+        </tr>
+        <tr>
+            <td>이유형 </td>
+            <td>서울시 강서구 </td>
+            <td>컴공과 </td>
+            <td>2학년 </td>
+        </tr>
+        <tr>
+            <td>이도형 </td>
+            <td>서울시 강동동구 </td>
+            <td>컴공과 </td>
+            <td>3학년 </td>
+        </tr>
+        <tr>
+            <td>이미란 </td>
+            <td>서울시 서초구구 </td>
+            <td>컴공과 </td>
+            <td>1학년 </td>
+        </tr>
+    </table>
+    <hr>
+    <table border="1" style="width: 300px;">
+      <caption>[ 표 1 ]</caption>
+      <tr height="50" bgcolor="orange">
+        <td align="center">하나 </td>
+        <td align="center">둘 </td>
+        <td align="center" rowspan="2">셋 </td>   
+    </tr>
+    <tr height="50" align="center">
+        <td colspan="2">2칸을 합침!!</td>
+    </tr>
+    </table>
+
+<hr>
+<table>
+    <caption><b>[표 2]</b></caption>
+     <tr height="50">
+        <th>사진 </th>
+        <th>이름 </th>
+        <th>주소 </th>
+        <th>핸드폰 </th>
+     </tr>
+     <tr>
+        <td rowspan="3">
+            <img src="../만화이미지/01.png" width="80">
+        </td>
+        <td>이수연 </td>
+        <td>서울시 강서구 </td>
+        <td>010-111-2222 </td>
+     </tr>
+     <tr>
+       
+        <td>이효리 </td>
+        <td>제주시 </td>
+        <td>010-111-4444 </td>
+     </tr>
+     <tr>
+       
+        <td>김선자 </td>
+        <td>부산시 </td>
+        <td>010-145-7845 </td>
+     </tr>
+</table>
+
+</body>
+</html>

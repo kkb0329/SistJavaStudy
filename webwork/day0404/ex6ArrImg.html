@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img.food{
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 100px;
+        }
+        img.ani{
+            width: 100px;
+            height: 100px;
+            border: 1px solid green;
+            border-radius:20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>기본</h3>
+    <script>
+         var hello="<h1>Hello H1!!</h1>";
+         document.write(hello);
+    </script>
+
+    <h3>배열연습1_1~10까지 b태그로 2칸씩 떼서 출력</h3>
+    <script>
+       for(var i=1;i<=10;i++){
+        document.write("<b>"+i+"</b>&nbsp;&nbsp;")
+       }
+    </script>
+
+    <h3>배열연습2_선언한 배열을 출력하시오_너비 100</h3>
+    <script>
+        var imgarr=["blackwidow","captain","mang","icon02","toy04"];
+
+        for(var i=0;i<imgarr.length;i++)
+        {
+            var f="<img src='../logoImg/"+imgarr[i]+".png' width='100' border='1'>";
+            document.write(f+"&nbsp;&nbsp;")
+        }
+
+    </script>
+
+<h3>배열연습3_food의 모든이미지 출력_너비 100</h3>
+<script>
+    for(var i=1;i<=12;i++){
+
+        var imgname="../Food/"+i+".jpg";
+        var s="<img src='"+imgname+"' class='food'>";
+        document.write(s);
+
+        if(i%4==0)
+        document.write("<br><br>");
+    }
+</script>
+
+<h3>배열연습4_만화이미지의 모든이미지 출력_css는 class명 ani로 주세요
+    너비,보더...한줄에 5개만 두자
+
+</h3>
+<script>
+    for(var i=1;i<=20;i++){
+        var imgname="../만화이미지/"+(i<10?"0":"")+i+".png";
+        var s="<img src='"+imgname+"' class='ani'>";
+        document.write(s+"&nbsp;");
+
+        if(i%5==0)
+        document.write("<br><br>");
+    }
+</script>
+</body>
+</html>

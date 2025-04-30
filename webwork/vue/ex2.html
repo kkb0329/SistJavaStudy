@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button type="button" v-on:click="eventFunc1(200)">버튼1이벤트 연습 </button>
+        <br>
+        <button type="button" @click="eventFunc1('이수연',3000)">버튼2이벤트 연습 </button>
+        <br>
+        <button type="button" @click="eventFunc1">버튼3이벤트 연습 </button>
+        <br>
+
+        <!-- countNum이라고 변수주시고 1씩 증가시키는 이벤트 만들어보세요  -->
+        <button type="button" v-on:click="increNum">Counter:{{countNum}}</button>
+    </div>
+    <script>
+        const app=Vue.createApp({
+
+            data(){
+
+                return{
+
+                    countNum:1
+                }
+            },
+            methods:{
+
+                eventFunc1(num){
+                    return alert('클릭이벤트 발생시 값 전달받음'+num);
+                },
+                eventFunc1(str,num){
+                    return alert('클릭이벤트 발생시 값 전달받음'+num+":"+str);
+                },
+                eventFunc1(e){
+                    return alert('그냥경고창창');
+                },
+
+                increNum(){
+                    this.countNum++;
+                }
+               
+
+            }
+
+        })
+
+        app.mount('#app')
+    </script>
+    <style>
+
+    </style>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        #show>div{
+            width: 400px;
+            height: 70px;
+            line-height: 70px;
+            font-size: 2em;
+            border: 1px solid gray;
+        }
+        div.box{
+
+            border: 2px solid orange;
+            margin-top: 20px;
+            width: 300px;
+            height: 130px;
+            font-family: 'Dongle';
+            font-size: 1.5em;
+        }
+    </style>
+    <script>
+        $(function(){
+
+            //배열을 객체형태
+            var array=[{"font":"Dongle","bcolor":"pink","fcolor":"blue"},
+                        {"font":"Gaegu","bcolor":"orange","fcolor":"purple"},
+                        {"font":"Hi Melody","bcolor":"gray","fcolor":"black"},
+                        {"font":"Nanum Myeongjo","bcolor":"lightyellow","fcolor":"gray"}
+                    ];
+
+                var s="";
+                $.each(array,function(idx,data){
+
+                    //js5
+                   // s+="<div style='font-family:"+data.font+"; color:"+data.fcolor+"; background-color:"+data.bcolor+"'>";
+
+                    //js6
+                    s+=`<div style='font-family:${data.font}; color:${data.fcolor}; background-color:${data.bcolor}'>`;
+                    s+=data.font;
+                    s+="</div><br>";
+
+                    
+                });
+
+                $("#show").html(s);
+        })
+    </script>
+</head>
+<body>
+    <div id="show"></div>
+
+    <div id="namecard"></div>
+    <script>
+        var ncard_arr=[{name:"이민호",hp:"010-111-2222",addr:"서울시 강남구"},
+                {name:"이민호",hp:"010-111-2222",addr:"서울시 강남구"},
+                {name:"이지은",hp:"010-444-2222",addr:"서울시 강서구"}];
+
+        var s="";
+        $.each(ncard_arr,function(i,elt){
+
+            s+="<div class='box'>";
+           
+            s+="이름: "+elt.name+"<br>";
+            s+="연락처: "+elt.hp+"<br>";
+            s+="주소: "+elt.addr+"<br>";
+            s+="</div>";
+        });
+
+        $("#namecard").append(s);
+
+    </script>
+</body>
+</html>

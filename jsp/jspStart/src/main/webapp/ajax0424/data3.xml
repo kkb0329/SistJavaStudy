@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sist>
+   <stu name="김희찬">
+      <java>88</java>
+      <ajax>77</ajax>
+      <oracle>99</oracle>
+   </stu>
+   <stu name="박창배">
+      <java>99</java>
+      <ajax>73</ajax>
+      <oracle>100</oracle>
+   </stu>
+   <stu name="조태민">
+      <java>79</java>
+      <ajax>89</ajax>
+      <oracle>96</oracle>
+   </stu>
+</sist>

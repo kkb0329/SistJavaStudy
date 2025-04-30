@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            font-size: 15px;
+            font-family:'Nanum Myeongjo' ;
+        }
+
+        #one{
+            left: 400px;
+            top: 100px;
+        }
+        #two{
+            left: 600px;
+            top: 100px;
+        }
+        #three{
+            left: 1000px;
+            top: 100px;
+        }
+
+        #four{
+            left: 1400px;
+            top: 100px;
+        }
+
+        #result{
+            left: 500px;
+           top: 500px;
+           text-align: center;
+           width: 800px;
+           border: 5px solid green;
+           border-radius: 30px;
+           font-size: 18pt;
+           padding-top: 20px;
+        }
+        button{
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #three h3:hover{
+            cursor: pointer;
+            background-color: bisque;
+        }
+    </style>
+    <script>
+        $(function(){
+
+            var theater="",movie="",time="",inwon="";
+
+            //#one에 영화예매 버튼추가
+            var b="<button type='button' class='btn btn-info' id='btn1'>영화예매</button>";
+            $("#one").append(b);
+
+            //btn1클릭시 극장선택,영화선택 버튼2개
+            $("#btn1").click(function(){
+
+                var b2="<button type='button' class='btn btn-success' id='btn2'>극장선택</button>";
+                b2+="&nbsp;&nbsp;<button type='button' class='btn btn-warning' id='btn3'>영화선택</button>";
+
+                $("#two").html(b2);
+            });
+
+
+            //버튼2,3는 동적메서드 on
+            $(document).on("click","#btn2",function(){
+
+                var s="<h3 class='theater'>CGV 강남점</h3>";
+                s+="<h3 class='theater'>CGV 압구정점 </h3>";
+                s+="<h3 class='theater'>CGV 청담점</h3>";
+                s+="<h3 class='theater'>MEGABOX 논현점</h3>";
+                s+="<h3 class='theater'>MEGABOX 코엑스점</h3>";
+                $("#three").html(s);
+            });
+
+
+            $(document).on("click","#btn3",function(){
+
+                var s="<h3 class='movie'>미키17</h3>";
+                s+="<h3 class='movie'>디오더 </h3>";
+                s+="<h3 class='movie'>노보케인 </h3>";
+                s+="<h3 class='movie'>게시록 </h3>";
+                s+="<h3 class='movie'>에일리언</h3>";
+                $("#three").html(s);
+            });
+
+            //영화관이나 제목클릭시 이벤트..결과창에 출력
+            $(document).on("click","#three h3",function(){
+
+                //클릭한 h3에서 class얻기
+               var selClass= $(this).attr("class");
+
+               if(selClass=='theater')
+                   theater="극장명: "+$(this).text();
+                else{
+
+                    var times=["09:00","11:30","13:20","15:40","17:50","20:40","22:00"];
+
+                    var tag="";
+                    $.each(times,function(idx,item){
+                        tag+="<input type='radio' name='time' value='"+times[idx]+"'>"+times[idx]+"<br>";
+                    });
+
+
+                    movie="영화제목: "+$(this).text();
+                    tag+='<br><input type="number" min="1" max="5" value="0" id="inwon">';
+
+                    $("#four").html(tag);
+                }
+                    
+
+              $("#result").html(theater+"<br>"+movie);
+            });
+
+            //라디오 버튼 선택시 이벤트
+            $(document).on("click","input[name='time']",function(){
+
+                console.log($(this).val());
+                time="상영시간: "+$(this).val();
+                $("#result").html(theater+"<br>"+movie+"<br>"+time);
+            });
+
+            //인원수 변경시 이벤트
+            $(document).on("change","#inwon",function(){
+                inwon="인원수: "+$(this).val();
+                $("#result").html(theater+"<br>"+movie+"<br>"+time+"<br>"+inwon);
+            })
+
+            
+
+        });
+    </script>
+</head>
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="result"></div>
+</body>
+</html>

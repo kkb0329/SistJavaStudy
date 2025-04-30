@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tb1{
+            width: 500px;
+            border: 5px solid gray;
+        }
+
+        /* >: 바로아래 태그를 의미 */
+        .tb1>thead>tr>th{
+            border: 1px solid gray;
+            background-color: orange;
+            color: blue;
+        }
+
+        .tb1>thead>tr{
+            height: 50px;
+            font-size: 1.2em;
+        }
+
+       .tb1>tbody>tr>td{
+        background-color: black;
+        color: white;
+        border: 1px solid yellow;
+       } 
+
+
+       .tb2{
+        width: 400px;
+        border: 5px inset green;
+        border-collapse: collapse;
+       }
+
+       /* >:바로아래  공백: 하위태그*/
+       .tb2 th,.tb2 td{
+
+        border: 1px solid orange;
+       }
+
+       .tb2 thead tr{height: 50px ; color: blue;}
+       .tb2 img{width: 80px;}
+
+       /*td 태그의 1번열의 너비 조절*/
+       .tb2 td:nth-child(1){width: 100px;}
+
+       /*3번열 td태그 너비 100px,글자색 blue , 우측정렬*/
+       .tb2 td:nth-child(3){
+        width: 100px;
+        color: blue;
+        text-align: right
+       }
+
+       /*테이블 이벤트*/
+       .tb1 thead th:hover{
+        background-color: white;
+        color: black;
+       }
+
+       .tb2 tbody tr:hover{
+        background-color: yellow;
+       }
+    </style>
+</head>
+<body>
+    <table class="tb1">
+       <caption><b>[표 1]</b></caption>
+         <thead>
+            <tr>
+                <th>이름</th><th>나이</th><th>주소 </th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+                <td>이효리 </td><td>34세 </td><td>서울시 서초구</td>
+            </tr>
+            <tr>
+                <td>이영자 </td><td>44세 </td><td>서울시 강남구</td>
+            </tr>
+            <tr>
+                <td>이민영 </td><td>24세 </td><td>서울시 강서구 </td>
+            </tr>
+         </tbody>
+    </table>
+
+    <hr>
+    <table class="tb2">
+     <caption><b>[표 2]</b></caption>
+     <thead>
+        <tr>
+            <th>꽃이름</th>
+            <th>사진 </th>
+            <th>가격 </th>
+        </tr>
+     </thead>
+
+     <tbody>
+        <tr>
+            <td>제라늄</td>
+            <td>
+                <img src="../flower_ani/f5.png" >
+            </td>
+            <td>15000원 </td>
+            
+           
+        </tr>
+        <tr>
+            <td>국화</td>
+            <td>
+                <img src="../flower_ani/f6.png" >
+            </td>
+            <td>25000원 </td>
+        </tr>
+        <tr>
+            <td>매화화</td>
+            <td>
+                <img src="../flower_ani/f7.png" >
+            </td>
+            <td>18000원 </td>
+        </tr>
+     </tbody>
+    </table>
+</body>
+</html>

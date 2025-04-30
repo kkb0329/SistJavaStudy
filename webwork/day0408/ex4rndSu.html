@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #out{
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            border: 2px solid gray;
+            width: 300px;
+            height: 200px;
+            padding: 20px 20px;
+            background-color: bisque;
+           
+        }
+
+        #rimg{
+            position: absolute;
+            top: 100px;
+            left: 400px;
+        }
+    </style>
+    <script>
+
+        var rnd;
+        var cnt=0;
+
+        window.onload=function(){
+            //1~100 까지의 랜덤수 발생
+            rnd=parseInt(Math.random()*100)+1;
+        }
+
+        function check(su){
+            if(su<=0 || su>100){
+                alert("잘못입력했어요");
+                return;
+            }
+
+            //난수와 숫자비교해서 결과출력
+            cnt++;
+            if(su>rnd)
+              document.getElementById("out").innerHTML+=cnt+":"+su+"보다 작습니다<br>";
+            else if(su<rnd)
+                document.getElementById("out").innerHTML+=cnt+": "+ su+"보다 큽니다<br>";
+            else{
+                out.innerHTML="<h4>축하합니다 정답은 "+rnd+"입니다 </h4>";
+                imgResult.src="../flower_ani/s6.jpg";
+                return;
+            }
+
+            //횟수제한해서 실패시 실패이미지..초기화
+            if(cnt>=5){
+                out.innerHTML="<h4>다음기회에ㅜㅜㅜ</h4>";
+                imgResult.src="../flower_ani/s10.jpg";
+                
+            }
+
+            frm.num.value='';
+
+        }
+    </script>
+</head>
+<body>
+    <form name="frm" action="#" onsubmit="return false">
+        <b>숫자입력: </b>
+        <!-- 숫자입력후 엔터누르면 함수호출하면서 값전달 -->
+         <input type="text" name="num" onkeydown="if(event.keyCode==13) check(value)">
+    </form>
+    <div id="out"></div>
+    <div id="rimg">
+        <img src="" name="imgResult">
+    </div>
+</body>
+</html>

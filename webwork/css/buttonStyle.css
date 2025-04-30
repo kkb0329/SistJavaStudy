@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap');
+
+body * {
+    font-family: 'Hi Melody';
+}
+
+.btn{
+    width: 120px;
+    height: 35px;
+    font-family: 'Dongle';
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.btn-green{
+    background-color: green;
+    color: white;
+}
+
+.btn-pink{
+    background-color: pink;
+    color: black;
+}
+
+.btn-purple{
+    background-color: purple;
+    color: white;
+}

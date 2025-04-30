@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #out{
+            position: absolute;
+            left: 20px;
+            top: 200px;
+            width: 450px;
+            height: 200px;
+            border: 2px solid green;
+            background-color: blanchedalmond;
+            padding: 20px 10px;
+        }
+    </style>
+    <script>
+        function showInfo(){
+
+           var out =document.getElementById("out");
+           var s=""; 
+
+          /* var hobbystr="취미: ";
+           var flag=false;
+           for(var i=0;i<frm.hobby.length;i++){
+              if(frm.hobby[i].checked){
+                flag=true;
+                hobbystr+=frm.hobby[i].value+" ";
+              }
+           }
+
+           if(!flag){
+            hobbystr="취미가 없습니다";
+           }else{
+             hobbystr+="입니다";
+           }*/
+
+           var h="";
+           for(var i=0;i<frm.hobby.length;i++){
+              //선택된경우에만 value값 얻는다
+              if(frm.hobby[i].checked) 
+                 h+="["+frm.hobby[i].value+"]";
+           }
+
+           s="취미: "+(h.length==0?"취미없음":h)+"<br>";
+          // s=hobbystr+"<br>";
+           s+="거주지: "+frm.city.value+"<br>";
+           s+="연령대: "+frm.age.value;
+
+
+           out.innerHTML=s; 
+            
+        }
+    </script>
+</head>
+<body>
+    <form action="#" name="frm">
+        <table class="table table-bordered" style="width: 500px;">
+            <tr>
+                <th>취미</th>
+                <td>
+                    <input type="checkbox" name="hobby" value="게임">게임&nbsp;
+                    <input type="checkbox" name="hobby" value="넷플릭스">넷플릭스&nbsp;
+                    <input type="checkbox" name="hobby" value="코딩">코딩&nbsp;
+                    <input type="checkbox" name="hobby" value="여행 ">여행 &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <th>거주지역 </th>
+                <td>
+                    <input type="radio" name="city" value="서울">서울 &nbsp;
+                    <input type="radio" name="city" value="경기 " checked>경기  &nbsp;
+                    <input type="radio" name="city" value="대전 ">대전  &nbsp;
+                    <input type="radio" name="city" value="대구 ">대구  &nbsp;
+                    <input type="radio" name="city" value="부산 ">부산  &nbsp;
+                    <input type="radio" name="city" value="제주 ">기타  &nbsp;
+                </td>
+            </tr>
+
+            <tr>
+                <th>연령대 </th>
+                 <td>
+                    <select name="age" class="form-control" style="width: 100px;">
+                        <option value="20대">20대</option>
+                        <option value="30대">30대</option>
+                        <option value="40대">40대</option>
+                        <option value="50대">50대</option>
+
+                    </select>
+                 </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" value="결과 출력" style="width: 100px;"
+                    class="btn btn-info" onclick="showInfo()">
+                    <input type="reset" value="초기화" style="width: 100px;"
+                    class="btn btn-danger">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="out"></div>
+
+   
+</body>
+</html>

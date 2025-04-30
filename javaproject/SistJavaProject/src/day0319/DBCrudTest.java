@@ -26,10 +26,8 @@ public class DBCrudTest {
 		addr=sc.nextLine();
 		
 		
-		//
-		
-		sql=" inser into hellow values(seq_test.nextval '"+name+"' , '"+addr+"',+sysdate )";
-		sql = "INSERT INTO hellow VALUES (seq_test.NEXTVAL, '" + name + "', '" + addr + "', SYSDATE)";
+		//sql=" inser into hellow values(seq_test.nextval '"+name+"' , '"+addr+"',+sysdate )";
+		sql = "INSERT INTO hello VALUES (seq_test.NEXTVAL, '" + name + "', '" + addr + "', SYSDATE)";
 		System.out.println(sql);
 		
 		Connection conn=null;
@@ -54,7 +52,7 @@ public class DBCrudTest {
 		
 		
 		Connection conn=db.getConnection();
-		sql = "SELECT * FROM hellow";
+		sql = "SELECT * FROM hello";
 		Statement stmt=null;
 		ResultSet rs=null;
 		
@@ -89,7 +87,7 @@ public class DBCrudTest {
 		System.out.println("d num");
 		num=Integer.parseInt(sc.nextLine()) ;
 		
-		sql="DELETE FROM hellow WHERE num ="+num;
+		sql="DELETE FROM hello WHERE num ="+num;
 		
 		Connection conn=db.getConnection();
 		
@@ -115,6 +113,96 @@ public class DBCrudTest {
 		
 	}
 	
+	
+	public boolean isData(int num) {
+		
+		boolean flag=false;
+		
+		sql="select * from hello where num="+num;
+		
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			
+			if (rs.next()) {
+				
+				flag= true;
+				
+			} else {
+
+				flag=false;
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, stmt, conn);
+		}
+		
+				
+		return flag;
+	}
+	
+	
+	public void update() {
+		Scanner sc=new Scanner(System.in);
+		
+		String name,addr;
+		int num;
+		
+		
+		
+		
+		System.out.println("번호입력");
+		num=Integer.parseInt(sc.nextLine());
+		
+		
+		if (!isData(num)) {
+			
+			System.out.println("nonodata");
+			return;
+			
+		} 
+		
+		System.out.println("이름");
+		name=sc.nextLine();
+		System.out.println("주소");
+		addr=sc.nextLine();
+		
+		
+		
+		
+		String sql = "UPDATE hello SET name='" + name + "', addr='" + addr + "' WHERE num=" + num;
+
+
+
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		
+		try {
+			stmt=conn.createStatement();
+			int a=stmt.executeUpdate(sql);
+			
+			if (a==0) {
+				System.out.println("no data");
+			} else {
+				System.out.println("sucess");
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -126,7 +214,7 @@ public class DBCrudTest {
 		int n;
 		
 		while (true) {
-			System.out.println("1.i2.s.3.u4.d 9.e");
+			System.out.println("1.i  2.s  3.u  4.d 9.e");
 			n=Integer.parseInt(sc.nextLine());
 			
 			
@@ -148,6 +236,12 @@ public class DBCrudTest {
 			 else if(n==4){
 					
 					db.delete();
+
+				}
+			
+			 else if(n==3){
+					
+					db.update();
 
 				}
 			

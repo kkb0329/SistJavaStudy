@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        .bts{
+            width: 200px;
+            height: 200px;
+            border: 10px dashed pink;
+            background-image: url(../만화이미지/06.png);
+            background-size: 30px 30px;
+        }
+        .bag{
+            border: 10px dotted mediumvioletred;
+            border-radius: 30px 50px 20px 80px;
+            box-shadow: 5px 5px 5px gray;
+            cursor: pointer;
+            margin: 20px 20px;
+        }
+    </style>
+    <script>
+        $(function(){
+
+            //버튼1
+            $("#btn1").click(function(){
+
+                $("div").addClass("bts");
+            });
+
+            //2
+            $("#btn2").click(function(){
+                $("div").removeClass("bts");
+            })
+            //3
+            $("#btn3").click(function(){
+                $("div").toggleClass("bts");
+            });
+
+
+          //첫이미지에 마우스 올리면 bag클래스 적용하고 벗어나면 제거(add,remove)
+            $("img:eq(0)").hover(function(){
+                $(this).addClass("bag");
+            },function(){
+                $(this).removeClass("bag");
+            });
+          //두번째 이미지는 똑같은데 toggle로 적용한다
+          $("img:eq(1)").hover(function(){
+            $(this).toggleClass("bag");
+          });
+
+          //3번이미지는 bs이용해서 3개중에 하나 적용해 보세요요
+          $("img:eq(2)").hover(function(){
+              $(this).toggleClass("img-thumbnail");
+          })
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <h3 class="alert alert-warning">addClass,removeClass,toggleClass 연습</h3>
+    <button type="button" id="btn1">스타일 추가 </button>
+    <button type="button" id="btn2">스타일 제거 </button>
+    <button type="button" id="btn3">스타일 추가/제거 반복 </button>
+
+    <div></div>
+
+    <h3 class="alert alert-warning">마우스를 올리면 bag클래스를 추가하고 벗어나면 제거거</h3>
+    <img src="../logoImg/bag01.png">
+    <br><br>
+    <img src="../logoImg/bag02.png">
+    <br><br>
+    <img src="../logoImg/bag03.png">
+    <br><br>
+</body>
+</html>

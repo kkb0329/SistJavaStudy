@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+
+            //div photos의 이미지들 각각 지정_너비,보더,높이 지정
+            $("div.photos>img").css("width","200px");
+            $("div.photos>img").css("height","150px");
+            $("div.photos>img").css("border","2px solid green");
+
+             //div photos2의 이미지들 한번에지정_너비,보더,높이 지정
+             $("div.photos2>img").css({
+                "width":"100px",
+                "height":"80px",
+                "border":"2px dotted green"
+             });
+
+             //container one,three만 글자색 파랑색변경
+             $("#container>.one,#container>.three").css("color","blue");
+
+             //container two 글꼴색상으로 three색상 변경하기
+             $("#container>.three").css("color",$("#container>.two").css("color"));
+
+             //photos아래 모든이미지 자동차7번으로 변경할것
+             $("div.photos>img").attr("src","../mycar/mycar7.png");
+
+             //photos의 첫번째 이미지만 변경 (자동차 3번으로)
+             $("div.photos>img").eq(0).attr("src","../mycar/mycar3.png");
+
+             //photos의 두번째 이미지만 변경 (자동차 5번으로)
+             $("div.photos>img:eq(1)").attr("src","../mycar/mycar5.png");
+
+             //photos2의 이미지중 1번이후 이미지 모두변경(음식10번으로)
+             $("div.photos2>img:gt(1)").attr("src","../Food/10.jpg");
+
+             //div one 아래 2개의 div 배경색 변경,글꼴도 변경
+             $("div.one>div").css({
+                "color":"blue",
+                "background-color":"pink"
+             });
+
+             //container three의 배경색으로 div one 아래 two의 div에서 얻은 배경색으로 변경하시오
+             $("#container>.three").css("background-color",$("div.one>.two").css("background-color"));
+        });
+    </script>
+</head>
+<body>
+    <h5>JQuery Css,Attr복습</h5>
+    <div class="one">
+        <div class="two">one 아래 two</div>
+        <div class="three">one 아래 three</div>
+    </div>
+    <div class="one2">
+        <div class="two">one2 아래 two</div>
+        <div class="three">one2 아래 three</div>
+    </div>
+    <div id="container">
+        <div class="one">container 아래 one</div>
+        <div class="two">container 아래 two</div>
+        <div class="three">container 아래 three</div>
+    </div>
+    <div class="photos">
+        <img src="../mycar/mycar10.png">
+        <img src="../mycar/mycar2.png">
+        <img src="../mycar/">
+        <img src="../mycar/mycar3.png">
+    </div>
+    <div class="photos2">
+       <img src="../Food/1.jpg">
+       <img src="../Food/11.jpg">
+       <img src="../Food/2.jpg">
+       <img src="../Food/5.jpg">
+       <img src="../Food/8.jpg">
+    </div>
+</body>
+</html>

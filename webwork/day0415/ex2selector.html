@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        div.sist{
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            width: 250px;
+            height: 300px;
+            border: 2px solid gray;
+        }
+
+        ul li{list-style: none;}
+
+        ul.menu>li{
+            font-size: 2em;
+            font-family: 'Dongle';
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        ul.submenu>li{
+            font-size: 23px;
+            font-family: 'Gaegu';
+        }
+
+        ul.submenu>li:hover{
+            background-color: #ccc;
+            color: white;
+        }
+
+        /* 가로메뉴 */
+        ul.garo li{float: left; width: 150px; height: 50px; line-height: 50px; 
+        border: 1px solid purple; margin: 5px; text-align: center;}
+
+        .garobg{background-color: purple; color:white ;}
+    </style>
+    <script>
+        $(function(){
+            //모든 서브메뉴숨기기
+            $("ul.submenu").hide();
+
+            //메인메뉴명을 클릭시 해당메뉴의 서브메뉴가 나타나도록 한다
+            //다른서브메뉴들은 모두 숨긴다
+            $("ul.menu>li").click(function(){
+
+                $(this).find("ul.submenu").show('slow');
+                $(this).siblings().find("ul.submenu").hide('slow');
+            });
+
+
+            //가로메뉴 마우스 위로 하면 garobg적용하고 벗어나면 지운다
+            $("ul.garo li").hover(function(){
+                $(this).addClass("garobg");
+            },function(){
+                $(this).removeClass("garobg");
+            })
+
+
+        })
+        
+
+        
+    </script>
+</head>
+<body>
+    <div class="sist">
+        <ul class="menu">
+            <li>
+                File
+                <ul class="submenu">
+                    <li>NewFile</li>
+                    <li>FileOpen</li>
+                    <li>FileSave</li>
+                    <li>FileRenameSave</li>
+                </ul>
+            </li>
+
+            <li>
+                Edit
+                <ul class="submenu">
+                    <li>Cut</li>
+                    <li>Copy</li>
+                    <li>Paste</li>
+                    <li>Search</li>
+                    <li>Change</li>
+                </ul>
+            </li>
+
+            <li>
+                Help
+                <ul class="submenu">
+                    <li>모든명령표시</li>
+                    <li>팁과요령</li>
+                    <li>비디오 자습서 </li>
+                    <li>문제보고 </li>
+                    <li>검색기능 </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <ul class="garo">
+            <li>Home</li>
+            <li>쇼핑몰</li>
+            <li>고객게시판</li>
+            <li>오시는길 </li>
+        </ul>
+    </div>
+
+
+
+
+</body>
+</html>

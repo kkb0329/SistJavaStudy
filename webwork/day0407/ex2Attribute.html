@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../div_img/oneday01.jpg" width="100" id="myimg">
+    <hr>
+    <button type="button" onclick="test()">사이즈 알아보기 </button>
+
+    <script>
+
+        function test(){
+            var photo=document.getElementById("myimg");
+
+            //태그의 속성값 가져오기
+            var w= photo.getAttribute("width");
+            var src= photo.getAttribute("src");
+
+            alert(w+"\n"+src);
+        }
+
+       
+    </script>
+</body>
+</html>

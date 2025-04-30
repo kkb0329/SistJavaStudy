@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="myscripts.js" defer></script>
+</head>
+
+<style>
+
+img.mycar{
+
+width: 200px;
+
+}
+
+.happy{
+
+ transform: rotate(45deg);
+
+}
+
+
+
+
+</style>
+
+
+
+<body>
+
+
+    <img src="../mycar/mycar11.png" class="mycar">
+    <img src="../mycar/mycar12.png" class="mycar">
+    <img src="../mycar/mycar13.png" class="mycar">
+    <hr>
+
+    <div class="cars">
+
+
+<!-- 
+<script>
+        
+    
+        for (let i = 1; i <= 15; i++) {
+          let img = document.createElement("img");
+          img.src = `../mycar/mycar${i}.png`;
+          img.alt = `자동차 이미지 ${i}`;
+          img.style.width = "150px";
+          img.style.margin = "10px";
+    
+          container.appendChild(img);
+        }
+      
+    </script> -->
+
+    <div class="cars"></div>
+
+<script>
+  for (let i = 1; i <= 15; i++){
+    document.querySelector(".cars").innerHTML += `<img src="../mycar/mycar${i}.png" alt="자동차 이미지 ${i}" style="width:150px; margin:10px;">`;
+  } 
+</script>
+
+
+
+
+    </div>
+
+    
+    
+
+
+</body>
+</html>

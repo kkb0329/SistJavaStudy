@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <b>이름: {{name}}<br>
+        주소: {{addr}} <br>
+         핸드폰: {{hp}}</b>
+
+         <button type="button" @click="chaneName('아이유')">이름 변경</button>
+        <button type="button" @click="changeAddr('제주시 애월읍')">주소 변경</button>
+        <button type="button" @click="changeHp('010-444-7777')">핸드폰 변경</button>
+
+        <hr>
+        <h2>양방향 바인딩 v-model_binding</h2>
+
+        {{message}}
+
+        <div>{{$data}}</div>
+
+        <input v-model="message">
+
+        <h4>이미지 나타내기</h4>
+            <img v-bind:src="imgSrc">
+        <h4>이미지 변경하기</h4>
+        <input v-model="imgSrc" >
+        
+
+
+    </div>
+
+    
+    <script>
+        const app=Vue.createApp({
+
+            data(){
+
+                return{
+                    name:'이수연',
+                    hp:'010-222-3333',
+                    addr:'서울시 강남구 역삼동',
+                    message:"다음시간은 노드설치",
+                    imgSrc:'../Food/1.jpg',
+                   
+                }
+            },
+            methods:{
+                chaneName:function(myname){
+                    this.name=myname;
+                },
+                changeHp(myhp){
+                    this.hp=myhp;
+                },
+                changeAddr(myaddr){
+                    this.addr=myaddr;
+                }
+
+            }
+
+        })
+
+        app.mount('#app')
+    </script>
+    <style>
+
+    </style>
+
+
+</body>
+</html>

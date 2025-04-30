@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+  <div style="margin: 100px;">
+      <h4>평가할 음식을 선택해 주세요</h4>
+      <select id="selFoodImage">
+         <option value="1">샌드위치</option>
+         <option value="11">망고빙수</option>
+         <option value="2">꼬치구이</option>
+         <option value="10">햄에그덮밥</option>
+      </select>
+      <br><br>
+      <input type="text" id="chuScore1">
+      <input type="text" id="chuScore2">
+      <input type="text" id="chuScore3">
+      
+      <button type="button" class="btn btn-info" id="btnSend">데이타 전송</button>
+      <br><br>
+      <div id="foodResult"></div>
+      
+      <!-- div에 출력은
+           음식이미지 그아래 음식명과 음식평점(점수의 합 or 평균) 
+           Ajax이용해서 json반환받은 값으로 -->
+           
+  </div>
+  
+  <script type="text/javascript">
+      $("#btnSend").click(function(){
+    	  
+    	  var photono=$("#selFoodImage").val();
+    	  var photofood=$("#selFoodImage option:selected").text();
+    	  var score1=$("#chuScore1").val();
+    	  var score2=$("#chuScore2").val();
+    	  var score3=$("#chuScore3").val();
+    	  
+    	  var data="photono="+photono+"&photofood="+photofood+"&score1="+score1+"&score2="+score2+"&score3="+score3;
+    	  
+    	  $.ajax({
+    		  type:"get",
+    		  url:"quizReceive.jsp",
+    		  dataType:"json",
+    		  data:data,
+    		  success:function(res){
+    			  
+    			  var out="<img src='"+res.photo+"'><br>";
+    			  out+="<h3>음식명: "+res.photofood+"</h3>";
+    			  out+="<h3>총합: "+res.tot+"</h3>";
+    			  out+="<h3>평점: "+res.avg+"</h3>";
+    			  
+    			  $("#foodResult").html(out);
+    		  }
+    	  })
+    	 
+      });
+  </script>
+  
+  
+</body>
+</html>
