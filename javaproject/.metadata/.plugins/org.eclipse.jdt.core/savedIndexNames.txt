@@ -2,4 +2,3 @@ INDEX VERSION 1.134+C:\sist0217\work\SistJavaStudy\javaproject\.metadata\.plugin
 4135913033.index
 1865797976.index
 110844903.index
-47068124.index
