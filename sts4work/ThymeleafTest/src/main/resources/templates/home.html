@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Dongle&family=Gaegu&family=Hi+Melody&family=Nanum+Myeongjo&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+
+  <header th:replace="~{fragment/header :: header}"></header>
+  <h3 class="alert alert-info">Home입니다</h3>
+  <img alt="" src="쇼핑몰사진/1.jpg" width="200">
+  
+  <h3>현재날짜: 
+    <span th:text="${#calendars.format(#calendars.createNow(),'yyyy년 MM월 dd일 HH시 mm분')}"></span>
+  </h3>
+  
+   <!-- 링크 -->
+   <a th:href="@{/hello1}">타임리프  hello1</a><br>
+   <a th:href="@{/hello2(name='이효리',ban=4)}">타임리프  hello2</a><br>
+   <a href="hello2?name=이수연&ban=4">타임리프  hello2</a><br>
+   
+   <!-- 버튼 -->
+   <button type="button" onclick="location.href='hello1'">hello1</button><br>
+   
+    <a th:href="@{/list}">타임리프  list</a><br>
+    
+    <a th:href="@{/login1}">admin로그인</a><br>
+    <a th:href="@{/login2}">angel로그인</a><br>
+</body>
+</html>

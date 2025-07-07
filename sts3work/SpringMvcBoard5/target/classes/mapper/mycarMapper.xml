@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.car.data.CarDao">
+  <select id="getAllOfMyCar" resultType="cdto">
+     select * from mycar order by num desc
+  </select>
+  <insert id="insertOfMycar" parameterType="cdto">
+    insert into mycar (carname,carprice,carcolor,carguip,carwrteday)values(#{carname},#{carprice},#{carcolor},#{carguip},now())
+  </insert>
+  <select id="selectOneOfCar" resultType="cdto" parameterType="String">
+    select * from mycar where num=#{num}
+  </select>
+  <update id="updateOfCar" parameterType="cdto">
+    update mycar set carname=#{carname},carprice=#{carprice},carcolor=#{carcolor},carguip=#{carguip} where num=#{num}
+  </update>
+</mapper>

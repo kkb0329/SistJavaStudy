@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringBootEx1Application<SpringBootEx1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "boot.mvc.ex1.SpringBootEx1Application",
+            "projectName": "SpringBootEx1",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+   <bean id="sawoninfo" class="spring.di.ex5.SawonInfo">
+      <constructor-arg value="홍길동"/>
+      <constructor-arg value="과장"/>
+      <property name="buseo">
+        <list>
+           <value>홍보부</value>
+           <value>개발부</value>
+           <value>인사부</value>
+        </list>
+      </property>
+      <property name="pay" value="2500000"/>
+   </bean>
+   
+   <bean id="emp" class="spring.di.ex5.Emp">
+     <constructor-arg value="네이버"/>
+     <property name="sawon" ref="sawoninfo"/>
+     <property name="empLoc" value="서초구"/>
+   </bean>
+</beans>

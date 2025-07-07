@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="my" class="spring.di.ex3.MyInfo">
+       <constructor-arg value="홍길동"/>
+       <constructor-arg >
+            <value>서울시 강남구 역삼동 쌍용교육센터</value>
+       </constructor-arg>
+       <constructor-arg value="22"/>
+    </bean>
+    
+    <bean id="moim" class="spring.di.ex3.Moim">
+       <!-- Myinfo는 생성자주입 -->
+       <constructor-arg ref="my"/>
+       <!-- 전공은 setter 주입 -->
+       <property name="major" value="컴퓨터공학과"/>
+    </bean>
+</beans>

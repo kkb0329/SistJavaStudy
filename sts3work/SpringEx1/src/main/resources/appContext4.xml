@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+     <!-- sawonData -->
+     <bean name="sdata" class="spring.di.ex4.SawonData">
+        <!-- 사원명은 생성자 -->
+          <constructor-arg value="아이유"/>
+        
+        <!-- 급여,입사일 stter -->
+        <property name="pay" value="2500000"/>
+        <property name="ipsaday" value="2021-10-12"/>
+     </bean>
+     
+     
+     <!-- sawon -->
+     <bean name="sw" class="spring.di.ex4.Sawon">
+        <constructor-arg ref="sdata"/>
+     </bean>
+</beans>

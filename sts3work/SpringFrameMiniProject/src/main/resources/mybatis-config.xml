@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+ <configuration>
+   <typeAliases>
+     <typeAlias type="spring.mvc.dto.MyshopDto" alias="ShopDto"/>
+     <typeAlias type="spring.mvc.dto.MemberDto" alias="Member"/>
+     <typeAlias type="spring.mvc.dto.BoardDto" alias="Board"/>
+     <typeAlias type="spring.mvc.dto.AnswerDto" alias="Answer"/>
+   </typeAliases>
+ </configuration>

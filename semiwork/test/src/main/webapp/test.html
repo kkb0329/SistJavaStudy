@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Continents Click by Color</title>
+  <style>
+    svg path {
+      cursor: pointer;
+      transition: fill 0.3s;
+      stroke: #999; /* 경계선 추가 */
+      stroke-width: 1;
+    }
+  </style>
+</head>
+<body>
+
+<object id="map" type="image/svg+xml" data="Continents_vide_couleurs-automatedvector.svg" width="100%" height="800px"></object>
+
+<script>
+  const EXCLUDE_COLOR = "#b6e880"; // 제외할 색상
+  const HIGHLIGHT_OPACITY = "1";
+  const DIMMED_OPACITY = "0.2";
+
+  const originalColors = new Map();
+
+  document.getElementById("map").addEventListener("load", () => {
+    const svgDoc = document.getElementById("map").contentDocument;
+    const paths = svgDoc.querySelectorAll("path");
+
+    // 초기 설정
+    paths.forEach(path => {
+      const fill = path.getAttribute("fill") || "#000000";
+      const lowerFill = fill.toLowerCase();
+      originalColors.set(path, lowerFill);
+
+      if (lowerFill === EXCLUDE_COLOR) {
+        path.setAttribute("fill", "#ffffff");
+        path.style.display = "none";
+      } else {
+        path.setAttribute("fill", "#ffffff");
+        path.style.display = "inline";
+      }
+
+      path.setAttribute("stroke", "#999");
+      path.setAttribute("stroke-width", "1");
+      path.style.opacity = "1"; // 초기 불투명도
+    });
+
+    // 클릭 시 해당 대륙 강조
+    paths.forEach(path => {
+      path.addEventListener("click", () => {
+        const clickedColor = originalColors.get(path);
+
+        if (clickedColor === EXCLUDE_COLOR || clickedColor === "#ffffff") return;
+
+        paths.forEach(p => {
+          const original = originalColors.get(p);
+          if (original === clickedColor) {
+            p.setAttribute("fill", original); // 원래 색으로 복원
+            p.style.display = "inline";
+            p.style.opacity = HIGHLIGHT_OPACITY;
+          } else if (original === EXCLUDE_COLOR) {
+            p.setAttribute("fill", "#ffffff");
+            p.style.display = "none";
+          } else {
+            p.setAttribute("fill", original); // 얼룩지게 하기 위해 원래 색 유지
+            p.style.display = "inline";
+            p.style.opacity = DIMMED_OPACITY; // 흐리게 처리
+          }
+        });
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
